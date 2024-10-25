@@ -1,4 +1,4 @@
-#!/usr/bin/env bun
+#! /usr/bin/env bun
 
 import inquirer from "inquirer";
 import { $ } from "bun";

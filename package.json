@@ -2,8 +2,11 @@
   "name": "create-at23",
   "module": "index.ts",
   "type": "module",
-  "version": "0.1.2",
-  "bin": "index.ts",
+  "version": "0.1.5",
+  "main": "index.ts",
+  "bin": {
+    "create-at23": "./index.ts"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
