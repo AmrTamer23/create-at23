@@ -2,13 +2,21 @@ import inquirer from "inquirer";
 import { $ } from "bun";
 
 async function main() {
-  const { template, projectName } = await inquirer.prompt([
+  const { template } = await inquirer.prompt([
     {
       type: "list",
       name: "template",
       message: "Select the template type:",
       choices: ["static", "e-commerce"],
     },
+  ]);
+
+  if (template === "e-commerce") {
+    console.log("⌛ Coming soon...");
+    return;
+  }
+
+  const { projectName } = await inquirer.prompt([
     {
       type: "input",
       name: "projectName",
@@ -16,13 +24,8 @@ async function main() {
     },
   ]);
 
-  if (template === "static") {
-    console.log(`Cloning static template for project "${projectName}"...`);
-    await cloneStaticTemplate(projectName);
-  } else {
-    console.log(`Cloning e-commerce template for project "${projectName}"...`);
-    await cloneEcommerceTemplate(projectName);
-  }
+  console.log(`Cloning static template for project "${projectName}"...`);
+  await cloneStaticTemplate(projectName);
 }
 
 async function cloneStaticTemplate(projectName: string) {
@@ -37,10 +40,6 @@ async function cloneStaticTemplate(projectName: string) {
       https://github.com/AmrTamer23/at23-static-web/tree/main#readme`
   );
   console.log("🚀 Happy coding!");
-}
-
-async function cloneEcommerceTemplate(projectName: string) {
-  console.log("⌛ Coming soon...");
 }
 
 main().catch((error) => {
